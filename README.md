@@ -43,8 +43,11 @@ https://wine-api-1.herokuapp.com/
 
 `
 python manage.py python shell_plus
+
 from wines.models import Wine
+
 Wine.objects.all()
+
 Wine.objects.create(wine_name='Vinio', price='50', varietal='Cabernet')
 `
 
