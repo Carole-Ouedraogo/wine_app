@@ -47,24 +47,31 @@ from wines.models import Wine
 Wine.objects.all()
 Wine.objects.create(wine_name='Vinio', price='50', varietal='Cabernet')
 `
-Getting Django Ready For Heroku
-We have to add a few things to our Django app to make sure it will run properly when we deploy it. The steps that are going to follow is based off of the official docs.
 
-Create a Procfile
+# Deploying to Heroku
+Up until now we've been running all of our Django apps locally. This is great for development, but how do we deploy our apps to a server that is accessible to the rest of the internet? There are many services online designed to make this task easy for us. Amazon Web Services (AWS) is one of the most popular, but it's learning curve is pretty high. The service we will be using today, and for future projects, is called [Heroku](https://www.heroku.com/). It's built on top of AWS, but it abstracts away a lot of the complexity so that deploying apps is super simple. Plus, it will allow us to deploy our app for free!
 
-The first thing we need to create is a Procfile in our app's root directory (at the same level as manage.py). In this file, we are going to tell Heroku which web server we want to use for our app. Open the file and copy this line of code web: gunicorn INSERT_PROJECT_NAME_HERE.wsgi, being sure to replace "INSERT_PROJECT_NAME_HERE" with whatever the name of your app project is. In our case, it's wine_api.
-Gunicorn is the server Heroku recommends we use. Install it with pip install gunicorn.
-Django-Heroku
+### Getting Django Ready For Heroku
+We have to add a few things to our Django app to make sure it will run properly when we deploy it. The steps that are going to follow is based off of the [official docs](https://devcenter.heroku.com/articles/django-app-configuration).
 
-Most of the rest of the setup is done for us by installing a final pip package called django-heroku. Run pip install django-heroku.
-Then place import django_heroku at the very top of your settings.py file and django_heroku.settings(locals()) at the bottom of settings.py.
-Requirements
+1. Create a Procfile
+    - The first thing we need to create is a `Procfile` in our app's root directory (at the same level as `manage.py`). In this file, we are going to tell Heroku which web server we want to use for our app. Open the file and copy this line of code `web: gunicorn INSERT_PROJECT_NAME_HERE.wsgi`, being sure to replace "INSERT_PROJECT_NAME_HERE" with whatever the name of your app project is. In our case, it's `wine_api`.
+    - Gunicorn is the server Heroku recommends we use. Install it with `pip install gunicorn`.
 
-The final thing we need to do is create our requirements.txt file in the root (the same level as your venv directory. Heroku will use this to download all our dependencies, including gunicorn and django-heroku.
-$ pip freeze > requirements.txt
-Create your .gitignore file
 
-You don't need to commit your venv/ or any pycache's, so let's create a .gitignore file and add in venv/ and __pycache__/.
+2. Django-Heroku
+    - Most of the rest of the setup is done for us by installing a final `pip` package called `django-heroku`. Run `pip install django-heroku`.
+    - Then place `import django_heroku` at the very top of your `settings.py` file and `django_heroku.settings(locals())` at the bottom of `settings.py`.
+
+3. Requirements
+    - The final thing we need to do is create our `requirements.txt` file in the root (the same level as your `venv` directory. Heroku will use this to download all our dependencies, including `gunicorn` and `django-heroku`.
+      ```bash
+      $ pip freeze > requirements.txt
+      ```
+
+4. Create your `.gitignore` file
+    - You don't need to commit your `venv/` or any pycache's, so let's create a `.gitignore` file and add in `venv/` and `__pycache__/`.
+
 
 ![](header.png)
 
