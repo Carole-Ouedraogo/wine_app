@@ -41,7 +41,7 @@ https://wine-api-1.herokuapp.com/
 
 # From the CLI
 
-`
+```
 python manage.py python shell_plus
 
 from wines.models import Wine
@@ -49,7 +49,7 @@ from wines.models import Wine
 Wine.objects.all()
 
 Wine.objects.create(wine_name='Vinio', price='50', varietal='Cabernet')
-`
+```
 
 # Deploying to Heroku
 Up until now we've been running all of our Django apps locally. This is great for development, but how do we deploy our apps to a server that is accessible to the rest of the internet? There are many services online designed to make this task easy for us. Amazon Web Services (AWS) is one of the most popular, but it's learning curve is pretty high. The service we will be using today, and for future projects, is called [Heroku](https://www.heroku.com/). It's built on top of AWS, but it abstracts away a lot of the complexity so that deploying apps is super simple. Plus, it will allow us to deploy our app for free!
