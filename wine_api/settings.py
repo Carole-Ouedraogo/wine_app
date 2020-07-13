@@ -12,11 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
-import dj-database-url  # add this to the top of your file
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES[‘default’].update(db_from_env)
-# If you want to add a parameter to to set the maximum age of the database connection to 600 seconds(10 minutes, for example), you would write db_from_env as:
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
