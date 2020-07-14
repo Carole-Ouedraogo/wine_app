@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import django_heroku
 
-CORS_ORIGIN_WHITELIST = ['https://wine-api-1.herokuapp.com']
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -87,7 +85,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -106,6 +103,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+CORS_ORIGIN_WHITELIST = [
+    'https://wine-api-1.herokuapp.com',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
